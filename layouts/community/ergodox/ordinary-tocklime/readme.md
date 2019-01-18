@@ -6,4 +6,5 @@ changes:
 * Make the left hand control key (bottom) row read GUI, CTRL, ALT, MEH, Space (need to jump in FPS games!)
 * Add reset keys to the special layer - the button is a pain to press...
 * Use non-us hash and tilde, and backslash and pipe.
+* add some backlight controls
 

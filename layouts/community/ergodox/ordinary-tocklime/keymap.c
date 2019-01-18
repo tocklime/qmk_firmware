@@ -188,8 +188,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                         ,-------------.     ,-------------.
  *                                         |      |      |     |      |      |
  *                                  ,------|------|------|     |------+------+------.
- *                                  |      |      |      |     |      |      |      |
- *                                  |      |      |------|     |------|      |      |
+ *                                  |      |BL_BRTG      |     |      |      |      |
+ *                                  |BL_STEP      |------|     |------|      |      |
  *                                  |      |      |RESET |     |RESET |      |      |
  *                                  `--------------------'     `--------------------'
  */
@@ -202,7 +202,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
                                              ,KC_TRNS ,KC_TRNS
                                                       ,KC_TRNS
-                                     ,KC_TRNS,KC_TRNS ,RESET
+                                     ,BL_STEP,BL_BRTG ,RESET
                                                              // right hand
                                                              ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_MINS ,KC_BSPC ,KC_TRNS
                                                              ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_LBRC ,KC_RBRC ,KC_TRNS
