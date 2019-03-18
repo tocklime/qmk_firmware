@@ -6,10 +6,12 @@
 #include "action_util.h"
 
 #define BASE   0 // default layer
-#define SYMB   1 // symbols layer
-#define MDIA   2 // media layer
-#define SPEC   3 // special layer
-#define RBASE  4 // reverse default layer
+#define GAME   1 // gaming layer
+#define SYMB   2 // symbols layer
+#define MDIA   3 // media layer
+#define SPEC   4 // special layer
+#define RBASE  5 // reverse default layer
+
 
 #define LSymb 10 // left symbol-shift key
 #define LMdia 11 // left media-shift key
@@ -53,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+-------------|       |------+------+------+------+------+------+------------|
  * | Media  Tab |   Q  |   W  |   E  |   R  |   T  |   [  |       |  ]   |   Y  |   U  |   I  |   O  |   P  | \|   Media |
  * |------------+------+------+------+------+------|      |       |      |------+------+------+------+------+------------|
- * | Symbol     |  ^A  |   S  |   D  |  ^F  |   G  |------|       |------|   H  |   J  |   K  |   L  |  ^;  | '"  Symbol |
+ * | Symbol     |   A  |   S  |   D  |  ^F  |   G  |------|       |------|   H  |   J  |   K  |   L  |  ^;  | '"  Symbol |
  * |------------+------+------+------+------+------|Shift |       | Tab  |------+------+------+------+------+------------|
  * | Capitals   |   Z  |   X  |   C  |   V  |   B  | -Tab |       |      |   N  |   M  |   ,  |   .  |  /   |   Capitals |
  * `------------+------+------+------+------+-------------'       `-------------+------+------+------+------+------------'
@@ -71,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // left hand
  F(LSpec)  ,KC_1           ,KC_2   ,KC_3   ,KC_4  ,KC_5  ,KC_ESC
 ,F(LMdia)  ,KC_Q           ,KC_W   ,KC_E   ,KC_R  ,KC_T  ,KC_LBRC
-,M(LSymb)  ,LT(RBASE, KC_A),KC_S   ,KC_D   ,LT(RBASE, KC_F)  ,KC_G
+,M(LSymb)  ,KC_A           ,KC_S   ,KC_D   ,LT(RBASE, KC_F)  ,KC_G
 ,KC_LSFT   ,KC_Z           ,KC_X   ,KC_C   ,KC_V  ,KC_B  ,LSFT(KC_TAB)
 ,KC_LGUI   ,KC_LCTL        ,KC_LALT, MEH_T(KC_NO),KC_SPC
                                          ,KC_HOME,KC_END
@@ -88,6 +90,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  ,KC_DOWN ,KC_ENT ,KC_SPC
 ),
 
+/******* Game Layer ****************************************************************************************************
+ *
+ * ,------------------------------------------------------.       ,------------------------------------------------------.
+ * |            |      |      |      |      |      |      |       |      |      |      |      |      |      |   LGUI     |
+ * |------------+------+------+------+------+-------------|       |------+------+------+------+------+------+------------|
+ * |            |      |      |      |      |      |      |       |      |      |      |      |      |      |            |
+ * |------------+------+------+------+------+------|      |       |      |------+------+------+------+------+------------|
+ * | LCtrl      |      |      |      |      |      |------|       |------|      |      |      |      |      |            |
+ * |------------+------+------+------+------+------|      |       |      |------+------+------+------+------+------------|
+ * |            |      |      |      |      |      |      |       |      |      |      |      |      | UP   |            |
+ * `------------+------+------+------+------+-------------'       `-------------+------+------+------+------+------------'
+ *      | NOOP  |      |      |      |      |                                   |      |      | LEFT | DOWN | RIGHT |
+ *      `-----------------------------------'                                   `-----------------------------------'
+ *                                          ,-------------.       ,-------------.
+ *                                          |      |      |       |      |      |
+ *                                   ,------|------|------|       |------+------+------.
+ *                                   |      |      |      |       |      |      |      |
+ *                                   |      |      |------|       |------|      |      |
+ *                                   |      |      |      |       |      |      |      |
+ *                                   `--------------------'       `--------------------'
+ */
+[GAME] = LAYOUT_ergodox(
+// left hand
+ KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+,KC_LCTL ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+,KC_NO   ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+                                             ,KC_TRNS ,KC_TRNS
+                                                      ,KC_TRNS
+                                     ,KC_TRNS,KC_TRNS ,KC_TRNS
+                                                             // right hand
+                                                             ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_LGUI
+                                                             ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+                                                                      ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+                                                             ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_UP   ,KC_TRNS
+                                                                               ,KC_TRNS ,KC_TRNS ,KC_LEFT ,KC_DOWN ,KC_RIGHT
+                                                             ,KC_TRNS ,KC_TRNS
+                                                             ,KC_TRNS
+                                                             ,KC_TRNS ,KC_TRNS ,KC_TRNS
+),
 /******* Symbols Layer *************************************************************************************************
  *
  * ,-----------------------------------------------------.       ,-----------------------------------------------------.
@@ -179,7 +222,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-------------+------+------+------+------+-------------|    |------+------+------+------+------+------+-------------|
  * | Media Lock  |      |      |      |      |      |      |    |      |      |      |      |  [   |   ]  | Media Lock  |
  * |-------------+------+------+------+------+------|      |    |      |------+------+------+------+------+-------------|
- * | Symbol Lock |      |      |      |      |      |------|    |------|      |      |      |      |      | Symbol Lock |
+ * | Symbol Lock |      |      |      |      | GAME |------|    |------|      |      |      |      |      | Symbol Lock |
  * |-------------+------+------+------+------+------|      |    |      |------+------+------+------+------+-------------|
  * | Caps Lock   |      |      |      |      |      |      |    |      |      |      |      |      |      | Caps Lock   |
  * `-------------+------+------+------+------+-------------'    `-------------+------+------+------+------+-------------'
@@ -197,7 +240,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // left hand
  KC_TRNS ,KC_ESC  ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
 ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
-,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,TG(GAME)
 ,KC_CAPS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
 ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
                                              ,KC_TRNS ,KC_TRNS
