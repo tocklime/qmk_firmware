@@ -23,15 +23,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Defaults */
 
-#define VERSION "Alpha 01: Ted "
+#define VERSION "v1.1: ClayM"
 #define VERBOSE
 
 #define FORCE_NKRO
-#define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
-#define NO_DEBUG
 #define NO_ACTION_ONESHOT
-#define NO_ACTION_FUNCTION
+#define NO_ACTION_MACRO
+#define IGNORE_MOD_TAP_INTERRUPT
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
@@ -39,7 +38,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    g Heavy Industries 
 #define PRODUCT         Georgi
-#define DESCRIPTION     QMK keyboard firmware for Georgi
 
 /* key matrix size */
 #define MATRIX_ROWS 14
@@ -66,8 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* key combination for command */
 #define IS_COMMAND() ( \
-    keyboard_report->mods == (MOD_BIT(KC_LCTL) | MOD_BIT(KC_RCTL)) || \
-    keyboard_report->mods == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) \
+    get_mods() == (MOD_BIT(KC_LCTL) | MOD_BIT(KC_RCTL)) || \
+    get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) \
 )
 
 #define DEBOUNCE    5
